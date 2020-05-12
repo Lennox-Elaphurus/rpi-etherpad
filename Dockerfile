@@ -4,7 +4,6 @@ FROM resin/rpi-raspbian:latest
 ENV LANG C.UTF-8
 
 # Mainly based on tvelocity/etherpad-lite
-# Parts from http://node-arm.herokuapp.com/
 
 RUN apt-get -qq update
 RUN apt-get upgrade
