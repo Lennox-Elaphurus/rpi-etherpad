@@ -1,9 +1,7 @@
 # Pull base image
 FROM resin/rpi-raspbian:latest
-MAINTAINER Veekee
 
 ENV LANG C.UTF-8
-ENV TZ Europe/Paris
 
 # Mainly based on tvelocity/etherpad-lite
 # Parts from http://node-arm.herokuapp.com/
@@ -15,7 +13,11 @@ RUN rm -r /var/lib/apt/lists/*
 
 WORKDIR /opt
 
-RUN wget http://node-arm.herokuapp.com/node_archive_armhf.deb && dpkg -i node_archive_armhf.deb && rm -f node_archive_armhf.deb
+# get install script and pass it to execute: 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash 
+
+# and install node 
+RUN apt-get install nodejs
 
 RUN node -v
 
